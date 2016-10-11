@@ -22,6 +22,17 @@ docker run -it --rm \
   chickenzord/jenkins-cli help
 ```
 
+With auth and and XML file as input, for example to create a new project:
+
+```
+docker run -it --rm \
+  -v $HOME/.ssh:/ssh \
+  -v $(pwd)/path/to/my/xml/files:/my-xml \
+  -e "JENKINS_URL=http://jenkins.example.com:8080" \
+  -e "INPUT_FILE=/my-xml/my-job-description.xml" \
+  chickenzord/jenkins-cli create-job my-new-job
+```
+
 Replace `help` with your jenkin-cli command. See [Jenkins CLI wiki page](https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI) for more information.
 
 
