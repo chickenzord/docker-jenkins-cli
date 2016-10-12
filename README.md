@@ -33,6 +33,15 @@ docker run -it --rm \
   dcycle/docker-jenkins-cli create-job my-new-job
 ```
 
+Redirect output and/or errors:
+
+```
+...
+  -e "OUTPUT_FILE=/path/to/my/output.log" \
+  -e "ERROR_FILE=/path/to/my/error.log" \
+...
+```
+
 Replace `help` with your jenkin-cli command. See [Jenkins CLI wiki page](https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI) for more information.
 
 

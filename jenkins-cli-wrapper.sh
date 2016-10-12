@@ -15,17 +15,28 @@ else
     wget "$JENKINS_URL/jnlpJars/jenkins-cli.jar" -q -O "$cli_jar"
   fi
 
+  if [ -z "$OUTPUT_FILE" ]; then
+      STDOUT=/dev/stdout
+  fi
+  if [ -z "$ERROR_FILE" ]; then
+      STDOUT=/dev/stderr
+  fi
+
   if [ -f "$INPUT_FILE" ]; then
     if [ -f "$PRIVATE_KEY" ]; then
-      java -jar "$cli_jar" -s $JENKINS_URL -i $PRIVATE_KEY "$@" < "$INPUT_FILE"
+      java -jar "$cli_jar" -s $JENKINS_URL -i $PRIVATE_KEY "$@" < $INPUT_FILE \
+      > "$OUTPUT_FILE" 2> "$ERROR_FILE"
     else
-      java -jar "$cli_jar" -s $JENKINS_URL "$@" < "$INPUT_FILE"
+      java -jar "$cli_jar" -s $JENKINS_URL "$@" < $INPUT_FILE \
+      > "$OUTPUT_FILE" 2> "$ERROR_FILE"
     fi
   else
     if [ -f "$PRIVATE_KEY" ]; then
-      java -jar "$cli_jar" -s $JENKINS_URL -i $PRIVATE_KEY "$@"
+      java -jar "$cli_jar" -s $JENKINS_URL -i $PRIVATE_KEY "$@" \
+      > "$OUTPUT_FILE" 2> "$ERROR_FILE"
     else
-      java -jar "$cli_jar" -s $JENKINS_URL "$@"
+      java -jar "$cli_jar" -s $JENKINS_URL "$@" \
+      > "$OUTPUT_FILE" 2> "$ERROR_FILE"
     fi
   fi
 fi
