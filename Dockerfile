@@ -1,4 +1,4 @@
-FROM anapsix/alpine-java:7
+FROM anapsix/alpine-java:8
 MAINTAINER Akhyar Amarullah <akhyrul@gmail.com>
 
 RUN apk --no-cache add openssl wget
