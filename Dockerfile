@@ -1,4 +1,4 @@
-FROM anapsix/alpine-java:7
+FROM anapsix/alpine-java:8
 MAINTAINER Akhyar Amarullah <akhyrul@gmail.com>
 
 WORKDIR /jenkins-cli
