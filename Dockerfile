@@ -1,6 +1,8 @@
 FROM anapsix/alpine-java:7
 MAINTAINER Akhyar Amarullah <akhyrul@gmail.com>
 
+RUN apk --no-cache add openssl wget
+
 WORKDIR /jenkins-cli
 COPY jenkins-cli-wrapper.sh .
 
